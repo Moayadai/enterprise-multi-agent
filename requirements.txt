@@ -1,0 +1,9 @@
+langchain>=0.1.0
+langchain-community
+langgraph
+langchain-huggingface
+chromadb
+pypdf
+python-dotenv
+langchain-ollama
+langchain-chroma
