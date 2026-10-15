@@ -2,16 +2,19 @@
 
 An advanced, production-ready, local-first multi-agent enterprise framework built with **LangGraph** (Supervisor + Specialized Agents), **Streamlit**, **ChromaDB**, and **Ollama**. Designed for absolute data sovereignty, air-gapped environments, and enterprise-grade automation.
 
+---
 
 ## 🌟 Architecture Overview (100% Local & Secure)
 
 This system is engineered to operate entirely on-premise, ensuring that sensitive corporate data never leaves local infrastructure.
+
+```text
 ┌───────────────────────────────────────────────┐
 │                 Streamlit UI                  │
 │       (Smart RTL/LTR & Temporary RAG)         │
 └───────────────────────┬───────────────────────┘
 ▼
-┌───────────────────────────────────────────────┐
+┌───────────────────────────────────��───────────┐
 │          LangGraph Supervisor Router          │
 │   (Intelligent Dynamic Query Classification)  │
 └───────┬───────────────┼───────────────┬───────┘
@@ -21,6 +24,10 @@ This system is engineered to operate entirely on-premise, ensuring that sensitiv
 │   HR Agent   ││   IT Agent   ││  Web Agent   │
 │ (Vector RAG) ││ (Code / Math)││  (Wikipedia) │
 └──────────────┘└──────────────┘└──────────────┘
+```
+
+---
+
 ## 🏗️ Phase-by-Phase Development Journey
 
 ### 1️⃣ Infrastructure & Virtualization Setup
@@ -61,5 +68,53 @@ This system is engineered to operate entirely on-premise, ensuring that sensitiv
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/Moayadai/enterprise-multi-agent.git](https://github.com/Moayadai/enterprise-multi-agent.git)
+   git clone https://github.com/Moayadai/enterprise-multi-agent.git
    cd enterprise-multi-agent
+   ```
+
+2. **Set up the virtual environment & dependencies:**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+3. **Configure environment variables:**
+   Create a `.env` file in the root directory based on `.env.example`:
+   ```env
+   OLLAMA_BASE_URL=http://localhost:11434
+   ```
+
+4. **Run Ollama & Pull Required Models:**
+   ```bash
+   ollama run llama3.1
+   ollama pull nomic-embed-text
+   ```
+
+5. **Launch the Streamlit Enterprise Workspace:**
+   ```bash
+   streamlit run src/app.py
+   ```
+
+---
+
+## 📂 Project Structure
+
+```text
+enterprise-multi-agent/
+├── src/
+│   ├── agents/          # Departmental agents (HR, IT, Web, Supervisor)
+│   ├── tools/           # Custom search and utility tools
+│   ├── database/        # Vector store & memory handlers
+│   └── app.py           # Streamlit enterprise frontend interface
+├── .env                 # Environment configuration (ignored by git)
+├── .gitignore           # Strict security rules for local DBs & uploads
+├── requirements.txt     # Project dependencies
+└── README.md            # System documentation
+```
+
+---
+
+## 🔒 Security & Privacy (Data Sovereignty)
+
+Designed for high-security environments. All vector embeddings, document parsing, and inference processes occur locally within your containerized infrastructure. No data is sent to external third-party cloud APIs.
