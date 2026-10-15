@@ -1,6 +1,6 @@
 # 🏢 Enterprise Multi-Agent AI System
 
-An advanced, production-ready, local-first multi-agent enterprise framework built with **LangGraph** (Supervisor + Specialized Agents), **Streamlit**, **ChromaDB**, and **Ollama**. Designed for absolute data sovereignty, air-gapped environments, and enterprise-grade automation.
+An advanced, production-ready, local-first multi-agent enterprise framework built with **LangGraph** (Supervisor + Specialized Agents), **Streamlit**, **ChromaDB**, and **Ollama**. Designed for absolu[...]
 
 ---
 
@@ -8,22 +8,19 @@ An advanced, production-ready, local-first multi-agent enterprise framework buil
 
 This system is engineered to operate entirely on-premise, ensuring that sensitive corporate data never leaves local infrastructure.
 
-```text
-┌───────────────────────────────────────────────┐
-│                 Streamlit UI                  │
-│       (Smart RTL/LTR & Temporary RAG)         │
-└───────────────────────┬───────────────────────┘
-▼
-┌───────────────────────────────────��───────────┐
-│          LangGraph Supervisor Router          │
-│   (Intelligent Dynamic Query Classification)  │
-└───────┬───────────────┼───────────────┬───────┘
-│               │               │
-▼               ▼               ▼
-┌──────────────┐┌──────────────┐┌──────────────┐
-│   HR Agent   ││   IT Agent   ││  Web Agent   │
-│ (Vector RAG) ││ (Code / Math)││  (Wikipedia) │
-└──────────────┘└──────────────┘└──────────────┘
+```mermaid
+graph TD
+    %% Styling configurations
+    classDef ui fill:#0ea5e9,stroke:#0369a1,stroke-width:2px,color:#fff,rx:8,ry:8;
+    classDef supervisor fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff,rx:8,ry:8;
+    classDef agent fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff,rx:8,ry:8;
+
+    %% Architecture Flow
+    UI[🖥️ Streamlit Enterprise UI<br/>Smart RTL/LTR & Temporary RAG]:::ui --> SUPERVISOR[🧠 LangGraph Supervisor Router<br/>Intelligent Dynamic Query Classification]:::supervisor
+
+    SUPERVISOR --> HR[👨‍💼 HR Agent<br/>Vector RAG & Policies]:::agent
+    SUPERVISOR --> IT[👨‍💻 IT Agent<br/>Code, Math & Networking]:::agent
+    SUPERVISOR --> WEB[🌐 Web Agent<br/>Wikipedia Search]:::agent
 ```
 
 ---
@@ -54,7 +51,7 @@ This system is engineered to operate entirely on-premise, ensuring that sensitiv
 - **Objective:** Give the LLM precise programmatic tools to query internal vector memory and handle dynamic user sessions.
 - **Implementation:**
   - Engineered custom tools using LangChain's `@tool` decorator (`knowledge_tool.py`), bypassing restrictive third-party wrappers for absolute control over data flow and prompt formatting.
-  - Developed a **Temporary In-Memory RAG** mechanism in Streamlit to instantly parse, chunk (`RecursiveCharacterTextSplitter`), and index user-uploaded PDFs on the fly for lightning-fast session queries.
+  - Developed a **Temporary In-Memory RAG** mechanism in Streamlit to instantly parse, chunk (`RecursiveCharacterTextSplitter`), and index user-uploaded PDFs on the fly for lightning-fast session quer[...]
 
 ### 5️⃣ Multi-Agent Orchestration (LangGraph Supervisor)
 - **Objective:** Coordinate specialized departmental agents under a unified routing manager.
@@ -117,4 +114,4 @@ enterprise-multi-agent/
 
 ## 🔒 Security & Privacy (Data Sovereignty)
 
-Designed for high-security environments. All vector embeddings, document parsing, and inference processes occur locally within your containerized infrastructure. No data is sent to external third-party cloud APIs.
+Designed for high-security environments. All vector embeddings, document parsing, and inference processes occur locally within your containerized infrastructure. No data is sent to external third-p[...]
