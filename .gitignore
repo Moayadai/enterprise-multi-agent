@@ -1,0 +1,22 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# Databases & Local Vector Stores
+chroma_db/
+chroma_db_storage/
+*.db
+*.sqlite3
+
+# Temp User Uploads / PDF Test Files
+temp_docs/
+*.pdf
+
+# Streamlit config
+.streamlit/

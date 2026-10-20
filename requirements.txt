@@ -7,3 +7,5 @@ pypdf
 python-dotenv
 langchain-ollama
 langchain-chroma
+wikipedia
+streamlit
